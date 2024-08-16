@@ -68,3 +68,9 @@ services:
       - POSTGRES_PASSWORD=Passw0rd
     volumes:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  polar-redis:
+    image: "redis:7.4"
+    container_name: polar-redis
+    ports:
+      - 6379:6379
