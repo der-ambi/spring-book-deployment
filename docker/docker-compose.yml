@@ -56,6 +56,20 @@ services:
       - SPRING_R2DBC_URL=r2dbc:postgresql://polar-postgres:5432/polardb_order
       - SPRING_FLYWAY_URL=jdbc:postgresql://polar-postgres:5432/polardb_order
 
+  edge-service:
+    depends_on:
+      - polar-redis
+      - catalog-service
+      - order-service
+    image: "edge-service"
+    container_name: "edge-service"
+    ports:
+      - 9000:9000
+    environment:
+      - CATALOG_SERVICE_URL=http://catalog-service:9001
+      - ORDER_SERVICE_URL=http://order-service:9002
+      - SPRING_DATA_REDIS_HOST=polar-redis
+
   # Backing Services
 
   polar-postgres:
