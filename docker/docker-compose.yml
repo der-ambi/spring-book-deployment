@@ -60,6 +60,7 @@ services:
   edge-service:
     depends_on:
       - polar-redis
+      - polar-keycloak
       - catalog-service
       - order-service
     image: "edge-service"
@@ -108,3 +109,15 @@ services:
       - 15672:15672
     volumes:
       - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+
+  polar-keycloak:
+    image: quay.io/keycloak/keycloak:25.0
+    container_name: polar-keycloak
+    command: start-dev --import-realm
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import
+    environment:
+      - KEYCLOAK_ADMIN=user
+      - KEYCLOAK_ADMIN_PASSWORD=Passw0rd
+    ports:
+      - 8080:8080
