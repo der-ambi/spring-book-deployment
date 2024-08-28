@@ -15,3 +15,8 @@ scrape_configs:
       - labels:
           __path__: '/tmp/catalog-service.json'
           service: catalog-service
+  - job_name: edge_logs
+    static_configs:
+      - labels:
+          __path__: '/tmp/edge-service.json'
+          service: edge-service
