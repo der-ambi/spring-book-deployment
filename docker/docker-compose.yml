@@ -7,6 +7,7 @@ services:
     depends_on:
       - polar-postgres
       - config-service
+      - polar-keycloak
       - tempo
     image: "catalog-service"
     container_name: "catalog-service"
