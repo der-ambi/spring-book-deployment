@@ -2,29 +2,29 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- github.com/der-ambi/spring-book-edge-service/k8s?ref=master
+  - github.com/der-ambi/spring-book-edge-service/k8s?ref=master
 
 patches:
-- path: patch-env.yml
-- path: patch-ingress.yml
-- path: patch-resources.yml
-- path: patch-volumes.yml
-- path: patch-checks.yml
+  - path: patch-env.yml
+  #- path: patch-ingress.yml
+  - path: patch-resources.yml
+  - path: patch-volumes.yml
+  - path: patch-checks.yml
 
 configMapGenerator:
-- behavior: merge
-  files:
-  - application-prod.yml
-  name: edge-config
+  - behavior: merge
+    files:
+      - application-prod.yml
+    name: edge-config
 
 images:
-- name: edge-service
-  newName: ghcr.io/der-ambi/spring-book-edge-service
-  newTag: latest
-- name: spring-book-edge-service
-  newName: ghcr.io/der-ambi/spring-book-edge-service
-  newTag: 7715b1345b6461d0b33d766fa639f2281f3b0e79
+  - name: edge-service
+    newName: ghcr.io/der-ambi/spring-book-edge-service
+    newTag: latest
+  - name: spring-book-edge-service
+    newName: ghcr.io/der-ambi/spring-book-edge-service
+    newTag: 7715b1345b6461d0b33d766fa639f2281f3b0e79
 
 replicas:
-- count: 2
-  name: edge-service
+  - count: 2
+    name: edge-service
