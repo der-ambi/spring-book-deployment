@@ -2,24 +2,27 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - github.com/der-ambi/spring-book-catalog-service/k8s?ref=a50feb23c02e8da2cb53cb996e1078615fd5fae0
+- github.com/der-ambi/spring-book-catalog-service/k8s?ref=a50feb23c02e8da2cb53cb996e1078615fd5fae0
 
 patches:
-  - path: patch-env.yml
-  - path: patch-resources.yml
-  - path: patch-volumes.yml
-  - path: patch-checks.yml
+- path: patch-env.yml
+- path: patch-resources.yml
+- path: patch-volumes.yml
+- path: patch-checks.yml
 
 configMapGenerator:
-  - behavior: merge
-    files:
-      - application-prod.yml
-    name: catalog-config
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: catalog-config
 images:
-  - name: catalog-service
-    newName: ghcr.io/der-ambi/spring-book-catalog-service
-    newTag: a50feb23c02e8da2cb53cb996e1078615fd5fae0
+- name: catalog-service
+  newName: ghcr.io/der-ambi/spring-book-catalog-service
+  newTag: a50feb23c02e8da2cb53cb996e1078615fd5fae0
+- name: spring-book-catalog-service
+  newName: ghcr.io/der-ambi/spring-book-catalog-service
+  newTag: b3a787cdc0e54b7c46c14b0f82481ef50ea4c585
 
 replicas:
-  - name: catalog-service
-    count: 2
+- count: 2
+  name: catalog-service
