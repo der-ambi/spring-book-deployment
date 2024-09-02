@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: edge-service
+          livenessProbe:
+            initialDelaySeconds: 120
+          readinessProbe:
+            initialDelaySeconds: 60
