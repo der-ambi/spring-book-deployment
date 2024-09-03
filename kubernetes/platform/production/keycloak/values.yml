@@ -3,6 +3,8 @@ commonAnnotations:
   app: polar-keycloak
 image:
   tag: 24.0.5
+global:
+  defaultStorageClass: gp2
 extraEnvVars:
   - name: KEYCLOAK_EXTRA_ARGS
     value: "--import-realm"
@@ -32,6 +34,9 @@ resources:
 service:
   type: LoadBalancer
   port: 80
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 #ingress:
 #  enabled: true
 #  annotations:
