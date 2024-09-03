@@ -32,8 +32,8 @@ resources:
 service:
   type: LoadBalancer
   port: 80
-ingress:
-  enabled: true
-  annotations:
-    alb.ingress.kubernetes.io/scheme: "internet-facing"
+#ingress:
+#  enabled: true
+#  annotations:
+#    alb.ingress.kubernetes.io/scheme: "internet-facing"
 
