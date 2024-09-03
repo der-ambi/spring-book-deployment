@@ -51,27 +51,3 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 9004
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: polar-ui
-  labels:
-    app: polar-ui
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-spec:
-  ingressClassName: alb
-  rules:
-    - http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: polar-ui
-              port:
-                number: 80
-
