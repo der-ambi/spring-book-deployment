@@ -10,5 +10,6 @@ metadata:
       }
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-central-1:038462785176:certificate/46b4430a-dd77-43bb-8d73-25cf678dd60e
 spec:
   ingressClassName: alb
