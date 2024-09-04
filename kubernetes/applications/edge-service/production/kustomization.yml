@@ -3,11 +3,10 @@ kind: Kustomization
 
 resources:
   - github.com/der-ambi/spring-book-edge-service/k8s?ref=master
-  - ingress.yml
 
 patches:
   - path: patch-env.yml
-  #- path: patch-ingress.yml
+  - path: patch-ingress.yml
   - path: patch-resources.yml
   - path: patch-volumes.yml
   - path: patch-checks.yml

@@ -8,3 +8,5 @@ metadata:
         deny all;
         return 403;
       }
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
