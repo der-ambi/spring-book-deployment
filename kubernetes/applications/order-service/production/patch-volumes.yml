@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: order-service
+          volumeMounts:
+            - name: rabbitmq-credentials-volume
+              mountPath: /workspace/secrets/rabbitmq
+            - name: postgres-order-credentials-secrets-volume
+              mountPath: /workspace/secrets/postgres
+            - name: keycloak-issuer-resourceserver-secret-volume
+              mountPath: /workspace/secrets/keycloak
+      volumes:
+        - name: rabbitmq-credentials-volume
+          secret:
+            secretName: polar-rabbitmq-credentials
+        - name: postgres-order-credentials-secrets-volume
+          secret:
+            secretName: polar-postgres-order-credentials
+        - name: keycloak-issuer-resourceserver-secret-volume
+          secret:
+            secretName: keycloak-issuer-resourceserver-secret
