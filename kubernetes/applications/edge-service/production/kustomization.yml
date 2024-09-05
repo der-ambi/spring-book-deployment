@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - github.com/der-ambi/spring-book-edge-service/k8s?ref=master
+  - github.com/der-ambi/spring-book-edge-service/k8s?ref=7715b1345b6461d0b33d766fa639f2281f3b0e79
 
 patches:
   - path: patch-env.yml
