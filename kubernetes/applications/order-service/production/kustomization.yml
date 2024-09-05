@@ -2,23 +2,26 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - github.com/der-ambi/spring-book-order-service/k8s?ref=e7fd14bc73f66de0b64813fd5b3b46e1d977265c
+- github.com/der-ambi/spring-book-order-service/k8s?ref=e7fd14bc73f66de0b64813fd5b3b46e1d977265c
 
 patches:
-  - path: patch-env.yml
-  - path: patch-volumes.yml
-  - path: patch-resources.yml
+- path: patch-env.yml
+- path: patch-volumes.yml
+- path: patch-resources.yml
 
 configMapGenerator:
-  - behavior: merge
-    files:
-      - application-prod.yml
-    name: order-config
+- behavior: merge
+  files:
+  - application-prod.yml
+  name: order-config
 images:
-  - name: order-service
-    newName: ghcr.io/der-ambi/spring-book-order-service
-    newTag: e7fd14bc73f66de0b64813fd5b3b46e1d977265c
+- name: order-service
+  newName: ghcr.io/der-ambi/spring-book-order-service
+  newTag: e7fd14bc73f66de0b64813fd5b3b46e1d977265c
+- name: spring-book-order-service
+  newName: ghcr.io/der-ambi/spring-book-order-service
+  newTag: 87e9dba98437003c0b68cf795505febfb33284ff
 
 replicas:
-  - name: order-service
-    count: 1
+- count: 1
+  name: order-service
